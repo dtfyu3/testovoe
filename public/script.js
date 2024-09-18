@@ -133,7 +133,9 @@ function checkTaskListCount(list) {
         span.classList.add('empty');
         span.style.fontStyle = 'italic';
         document.querySelector('.task-container').appendChild(span);
+        document.querySelector('.multiple-delete').style.display = 'none';
     }
+    else document.querySelector('.multiple-delete').style.display = 'block';
 }
 
 function changeCheckbox(event) {
