@@ -101,7 +101,7 @@ function addTask(event) {
     else {
         input.style.border = '2px solid';
         input.style.borderColor = 'red';
-        input.placeholder = 'Поле не должно быть пустым';
+        input.placeholder = 'Введите задачу';
     }
 }
 function createListElement(text) {
