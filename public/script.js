@@ -124,6 +124,8 @@ function deleteTask(event) {
     tasks_list.removeChild(task_element);
     checkTaskListCount(tasks_list);
     if (tasks.length == 0) window.localStorage.removeItem('tasks');
+    if (getFinishedTasksCount() > 0) document.querySelector('.multiple-delete').style.display = 'block';
+    else document.querySelector('.multiple-delete').style.display = 'none'
 }
 
 function checkTaskListCount(list) {
@@ -164,13 +166,11 @@ function getFinishedTasksCount() {
     return count;
 }
 function handleFinishedTasks() {
-    // for (let task of tasks) {
-    //     if (task.querySelector('input[type="checkbox"]').checked) task.querySelector('.delete').click();
-    // }
     var tasks = tasks_list.children;
     for (let i = tasks.length - 1; i >= 0; i--) {
         if (tasks[i].querySelector('input[type="checkbox"]').checked) tasks[i].querySelector('.delete').click();
     }
+    
 }
 document.querySelector('.multiple-delete').addEventListener('click', handleFinishedTasks);
 async function setWalpaper() {
