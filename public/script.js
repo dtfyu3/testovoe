@@ -32,7 +32,7 @@ async function getWeather(coordinates) {
     const xhr = new XMLHttpRequest();
     const appid = '';
     // xhr.open('GET', `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${appid}&units=metric&lang=ru`, true);
-    xhr.open('GET',`/api/weather?lat=${coordinates.lat}&lon=${coordinates.lon}`)
+    xhr.open('GET', `/api/weather?lat=${coordinates.lat}&lon=${coordinates.lon}`)
     xhr.send();
     xhr.onload = function () {
         if (xhr.status >= 200 && xhr.status < 300) {
@@ -85,14 +85,24 @@ function fillTaskList(tasks) {
 }
 function addTask(event) {
     const input = event.currentTarget;
-    const task_title = input.value; 
-    input.value = '';
-    tasks_list.appendChild(createListElement(task_title));
-    attachEventListeners(tasks_list.lastElementChild);
-    if (tasks_list.children.length == 1) document.querySelector('.empty').remove();
-    tasks.push(task = { title: task_title });
-    window.localStorage.removeItem('tasks');
-    window.localStorage.setItem('tasks', JSON.stringify(tasks))
+    const task_title = input.value;
+    if (task_title != '' && task_title != null) {
+        input.style.border = 'none';
+        input.style.borderColor = 'none';
+        input.placeholder = 'Новая задача';
+        input.value = '';
+        tasks_list.appendChild(createListElement(task_title));
+        attachEventListeners(tasks_list.lastElementChild);
+        if (tasks_list.children.length == 1) document.querySelector('.empty').remove();
+        tasks.push(task = { title: task_title });
+        window.localStorage.removeItem('tasks');
+        window.localStorage.setItem('tasks', JSON.stringify(tasks))
+    }
+    else {
+        input.style.border = '2px solid';
+        input.style.borderColor = 'red';
+        input.placeholder = 'Поле не должно быть пустым';
+    }
 }
 function createListElement(text) {
     const li = document.createElement('li');
@@ -113,7 +123,7 @@ function deleteTask(event) {
     window.localStorage.setItem('tasks', JSON.stringify(tasks))
     tasks_list.removeChild(task_element);
     checkTaskListCount(tasks_list);
-    if(tasks.length == 0) window.localStorage.removeItem('tasks');
+    if (tasks.length == 0) window.localStorage.removeItem('tasks');
 }
 
 function checkTaskListCount(list) {
@@ -144,7 +154,7 @@ function attachEventListeners(task) {
     task.querySelector("input[type='checkbox']").addEventListener('change', changeCheckbox);
 }
 
-async function setWalpaper(){
+async function setWalpaper() {
     const currentTime = new Date().getHours();
     // const currentTime = new Date().getSeconds(); testing
     let url = '';

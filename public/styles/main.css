@@ -14,14 +14,7 @@ body {
     color: white;
     text-align: center;
 }
-/* .parent{
-    width: 100%;
-    min-height: 60vh;
-    top: 0;
-    left: 0;
-    display: flex;
-    overflow: auto;  
-} */
+
 .date-container{
     position: fixed;
     top: 30%;
