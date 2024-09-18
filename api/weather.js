@@ -2,7 +2,7 @@ import 'dotenv/config';
 import fetch from 'node-fetch';
 export default async function handler(req, res) {
   const appid = process.env.appid;
-  const mappskey = process.env.mappskey;
+  const mappskey = process.env.mapskey;
   const lat = req.query.lat;
   const lon = req.query.lon;
   const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${appid}&units=metric&lang=ru`;
