@@ -104,6 +104,7 @@ input{
     font-size: 0px;
     display: inline-block;
     vertical-align:middle;
+    text-align: center;
 }
 #weather_image{
     margin: 0 auto;
