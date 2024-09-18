@@ -163,11 +163,15 @@ function getFinishedTasksCount() {
     return count;
 }
 function handleFinishedTasks() {
-    for (let task of tasks_list.children) {
-        if (task.querySelector('input[type="checkbox"]').checked) task.querySelector('.delete').click();
+    // for (let task of tasks) {
+    //     if (task.querySelector('input[type="checkbox"]').checked) task.querySelector('.delete').click();
+    // }
+    var tasks = tasks_list.children;
+    for (let i = tasks.length - 1; i >= 0; i--) {
+        if (tasks[i].querySelector('input[type="checkbox"]').checked) tasks[i].querySelector('.delete').click();
     }
 }
-document.querySelector('.multiple-delete').addEventListener('click',handleFinishedTasks);
+document.querySelector('.multiple-delete').addEventListener('click', handleFinishedTasks);
 async function setWalpaper() {
     const currentTime = new Date().getHours();
     // const currentTime = new Date().getSeconds(); testing
