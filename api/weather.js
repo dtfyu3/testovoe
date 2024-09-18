@@ -1,6 +1,10 @@
 import 'dotenv/config';
 import fetch from 'node-fetch';
 export default async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*'); 
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  
   const appid = process.env.appid;
   const mapskey = process.env.mapskey;
   const lat = req.query.lat;
