@@ -148,12 +148,26 @@ function changeCheckbox(event) {
         span.style.textDecoration = 'none';
         span.style.color = 'white';
     }
+    if (getFinishedTasksCount() > 0) document.querySelector('.multiple-delete').style.display = 'block';
+    else document.querySelector('.multiple-delete').style.display = 'none'
 }
 function attachEventListeners(task) {
     task.querySelector('.delete').addEventListener('click', deleteTask);
     task.querySelector("input[type='checkbox']").addEventListener('change', changeCheckbox);
 }
-
+function getFinishedTasksCount() {
+    let count = 0;
+    for (let task of tasks_list.children) {
+        if (task.querySelector('input[type="checkbox"]').checked) count++;
+    }
+    return count;
+}
+function handleFinishedTasks() {
+    for (let task of tasks_list.children) {
+        if (task.querySelector('input[type="checkbox"]').checked) task.querySelector('.delete').click();
+    }
+}
+document.querySelector('.multiple-delete').addEventListener('click',handleFinishedTasks);
 async function setWalpaper() {
     const currentTime = new Date().getHours();
     // const currentTime = new Date().getSeconds(); testing
@@ -201,5 +215,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     else {
         checkTaskListCount(tasks_list);
+
     }
 });

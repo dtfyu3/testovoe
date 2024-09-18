@@ -148,6 +148,19 @@ img.icon {
 button img.icon {
     transition: transform 0.2s ease, filter 0.2s ease;
 }
+.multiple-delete{
+    padding: 0px;
+    background-color: transparent;
+    color: white;
+    transition: transform 0.2s ease;
+    display: none;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.multiple-delete:hover{
+    transform: scale(1.2);
+    transition: transform 0.2s ease-in-out;
+}
 input[type="checkbox"] {
     appearance: none;
     -webkit-appearance: none;
