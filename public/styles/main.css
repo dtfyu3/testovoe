@@ -1,0 +1,189 @@
+body {
+    font-size: 20px;
+    text-align: center;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+#weather_container{
+    position: fixed;
+    right: 30px;
+    top: 30px;
+    color: white;
+}
+/* .parent{
+    width: 100%;
+    min-height: 60vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    overflow: auto;  
+} */
+.date-container{
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);   
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-align: center;
+    color: white;
+}
+.date-container .time{
+    font-size: 150px;
+}
+.date-container .date{
+    font-size: 50px;
+}
+.task-container{
+    position: relative;
+    margin-top: 45vh; 
+    padding: 20px;
+}
+.task-name{
+    vertical-align: middle;
+}
+ul{
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+li{
+    width: fit-content;
+    margin: 0 auto;
+}
+.task-container p{
+    margin-bottom: 0;
+    text-decoration: underline;
+}
+input{
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+.city{
+}
+#weather{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.weather-image, .temp{
+    flex: 1;
+    width: fit-content;
+}
+.weather-image{
+    margin-right: 10px;
+}
+.wallpaper{
+    font-size: 20px;
+    position: fixed;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    /* background: rgba(255, 244, 161, 0.8); */
+    padding: 20px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    /* background-image: url('../images/01.jpg'); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: background-image 1s ease-in-out;
+}
+.delete_container{
+    width: fit-content;
+    height: fit-content;
+    font-size: 0px;
+    display: inline-block;
+    vertical-align:middle;
+}
+#weather_image{
+    margin: 0 auto;
+    padding: 0px;
+    border: none;
+    outline: none;
+    display: block;
+    box-shadow: none;
+}
+#weather{
+    border: none;
+    outline: none;
+}
+.delete{
+    background-color: transparent;
+}
+button {
+    margin: 0 auto;
+    padding: 8px 16px;
+    border: none;
+    background-color: beige;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.delete img {
+    width: 20px;
+    height: 20px;
+    filter: invert(0%) sepia(100%) saturate(1000%) hue-rotate(0deg) brightness(100%) contrast(100%);
+    transition: filter 0.3s ease;
+}
+.delete img:hover{
+    filter: invert(26%) sepia(95%) saturate(7488%) hue-rotate(0deg) brightness(103%) contrast(103%);
+}
+button.delete {
+    padding: 0px;
+}
+img.icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+    filter: invert(100%) brightness(200%);
+}
+.icon:hover {
+    transform: scale(1.2);
+    transition: transform 0.2s ease-in-out;
+}
+button img.icon {
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    margin: 0;
+    padding: 10px;
+    vertical-align: middle;
+}
+input[type="checkbox"]:checked {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 7px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+input[type="checkbox"]:focus {
+    outline: none;
+    box-shadow: 0 0 2px 2px rgba(0, 123, 255, 0.5);
+}
