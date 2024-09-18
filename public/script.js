@@ -45,6 +45,7 @@ async function getWeather(coordinates) {
                 img.src = `https://openweathermap.org/img/wn/${icon_code}@2x.png`;
                 img.style.height = '50px';
                 img.style.width = '50px;'
+                document.querySelector('.city').textContent = response['city'];
             }
             catch (e) {
                 console.error('Error parsing JSON:', e);
