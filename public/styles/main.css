@@ -7,7 +7,8 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     color: white;
 }
-#weather_container{
+
+#weather_container {
     position: fixed;
     right: 30px;
     top: 30px;
@@ -15,46 +16,64 @@ body {
     text-align: center;
 }
 
-.date-container{
-    position: fixed;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);   
+.date-container {
+    position: relative;
+    margin-top: 20vh;
+    /* Отступ сверху для центрирования */
     background-color: rgba(0, 0, 0, 0.1);
     padding: 10px 20px;
     border-radius: 8px;
     text-align: center;
     color: white;
 }
-.date-container .time{
+
+.date-container .time {
     font-size: 150px;
 }
-.date-container .date{
+
+.date-container .date {
     font-size: 50px;
 }
-.task-container{
+
+.task-container {
     position: relative;
-    margin-top: 45vh; 
     padding: 20px;
+    margin-top: 40px;
+    /* Отступ от блока с датой и временем */
 }
-.task-name{
+
+.task-container p {
+    margin-bottom: 0;
+    text-decoration: underline;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Полупрозрачный черный фон */
+    padding: 5px 10px;
+    /* Добавим немного отступов вокруг текста */
+    border-radius: 4px;
+    /* Округленные углы для красоты */
+    /* display: inline-block; Для лучшего контроля размера фона */
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    /* Добавим тень для улучшения читаемости */
+}
+
+.task-name {
     vertical-align: middle;
 }
-ul{
+
+ul {
     display: block;
     list-style: none;
     margin: 0;
     padding: 0;
 }
-li{
+
+li {
     width: fit-content;
     margin: 0 auto;
 }
-.task-container p{
-    margin-bottom: 0;
-    text-decoration: underline;
-}
-input{
+
+input {
     padding: 10px 15px;
     font-size: 16px;
     border: 2px solid #ccc;
@@ -62,21 +81,20 @@ input{
     outline: none;
     transition: border-color 0.3s ease;
 }
-.city{
-}
-#weather{
+
+#weather {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.weather-image, .temp{
+
+.weather-image,
+.temp {
     flex: 1;
     width: fit-content;
 }
-.weather-image{
-    margin-right: 10px;
-}
-.wallpaper{
+
+.wallpaper {
     font-size: 20px;
     position: fixed;
     z-index: -1;
@@ -84,36 +102,11 @@ input{
     height: 100vh;
     left: 0;
     top: 0;
-    /* background: rgba(255, 244, 161, 0.8); */
-    padding: 20px;
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
-    /* background-image: url('../images/01.jpg'); */
     background-repeat: no-repeat;
     background-size: cover;
     transition: background-image 1s ease-in-out;
 }
-.delete_container{
-    width: fit-content;
-    height: fit-content;
-    font-size: 0px;
-    display: inline-block;
-    vertical-align:middle;
-}
-#weather_image{
-    margin: 0 auto;
-    padding: 0px;
-    border: none;
-    outline: none;
-    display: block;
-    box-shadow: none;
-}
-#weather{
-    border: none;
-    outline: none;
-}
-.delete{
-    background-color: transparent;
-}
+
 button {
     margin: 0 auto;
     padding: 8px 16px;
@@ -123,32 +116,53 @@ button {
     cursor: pointer;
     font-size: 16px;
 }
+
+.delete_container {
+    width: fit-content;
+    height: fit-content;
+    font-size: 0px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.delete {
+    background-color: transparent;
+}
+
 .delete img {
     width: 20px;
     height: 20px;
     filter: invert(0%) sepia(100%) saturate(1000%) hue-rotate(0deg) brightness(100%) contrast(100%);
     transition: filter 0.3s ease;
+
 }
-.delete img:hover{
+
+.delete img:hover {
     filter: invert(26%) sepia(95%) saturate(7488%) hue-rotate(0deg) brightness(103%) contrast(103%);
 }
+
 button.delete {
     padding: 0px;
 }
+
 img.icon {
     display: block;
     width: 20px;
     height: 20px;
     filter: invert(100%) brightness(200%);
+
 }
+
 .icon:hover {
     transform: scale(1.2);
     transition: transform 0.2s ease-in-out;
 }
+
 button img.icon {
     transition: transform 0.2s ease, filter 0.2s ease;
 }
-.multiple-delete{
+
+.multiple-delete {
     padding: 0px;
     background-color: transparent;
     color: white;
@@ -157,10 +171,12 @@ button img.icon {
     margin-top: 5px;
     margin-bottom: 5px;
 }
-.multiple-delete:hover{
+
+.multiple-delete:hover {
     transform: scale(1.2);
     transition: transform 0.2s ease-in-out;
 }
+
 input[type="checkbox"] {
     appearance: none;
     -webkit-appearance: none;
@@ -175,10 +191,12 @@ input[type="checkbox"] {
     padding: 10px;
     vertical-align: middle;
 }
+
 input[type="checkbox"]:checked {
     background-color: #007bff;
     border-color: #007bff;
 }
+
 input[type="checkbox"]:checked::after {
     content: '';
     position: absolute;
@@ -190,15 +208,80 @@ input[type="checkbox"]:checked::after {
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
 }
+
 input[type="checkbox"]:focus {
     outline: none;
     box-shadow: 0 0 2px 2px rgba(0, 123, 255, 0.5);
 }
-@media (max-width:1920px){
-    .task-container{
-        margin-top: 50vh;
+
+/* Адаптивные стили для маленьких экранов */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
     }
-    .task-container p{
-        margin-top: 0px;
+
+    .date-container .time {
+        font-size: 80px;
+    }
+
+    .date-container .date {
+        font-size: 30px;
+    }
+
+    .task-container {
+        padding: 10px;
+        margin-top: 20px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+
+    input {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+
+    .date-container .time {
+        font-size: 60px;
+    }
+
+    .date-container .date {
+        font-size: 24px;
+    }
+
+    .task-container {
+        margin-top: 15px;
+    }
+
+    button {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+
+    input {
+        font-size: 12px;
+        padding: 6px 8px;
+    }
+
+    input[type="checkbox"] {
+        padding: 7px 7px;
+    }
+
+    img.icon {
+        height: 17px;
+        width: 17px;
+    }
+
+    input[type="checkbox"]:checked::after {
+        top: 0px;
+        left: 4px;
     }
 }
