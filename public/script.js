@@ -81,8 +81,18 @@ function fillTaskList(tasks) {
     for (let i = 0; i < tasks.length; i++) {
         tasks_list.appendChild(createListElement(tasks[i].title));
         attachEventListeners(tasks_list.lastElementChild);
+        if (tasks[i].completed == 'true') {
+            let ch = tasks_list.lastElementChild.querySelector('input[type="checkbox"]');
+            ch.checked = !ch.checked;
+            ch.dispatchEvent(changeEvent);
+        }
+
     }
 }
+const changeEvent = new Event('change', {
+    bubbles: true,
+    cancelable: true 
+});
 function addTask(event) {
     const input = event.currentTarget;
     const task_title = input.value;
@@ -94,7 +104,7 @@ function addTask(event) {
         tasks_list.appendChild(createListElement(task_title));
         attachEventListeners(tasks_list.lastElementChild);
         if (tasks_list.children.length == 1) document.querySelector('.empty').remove();
-        tasks.push(task = { title: task_title });
+        tasks.push(task = { title: task_title, completed: 'false' });
         window.localStorage.removeItem('tasks');
         window.localStorage.setItem('tasks', JSON.stringify(tasks))
     }
@@ -119,8 +129,7 @@ function deleteTask(event) {
     if (index !== -1) {
         tasks.splice(index, 1);
     }
-    window.localStorage.removeItem('tasks');
-    window.localStorage.setItem('tasks', JSON.stringify(tasks))
+    changeStoragedTasks();
     tasks_list.removeChild(task_element);
     checkTaskListCount(tasks_list);
     if (tasks.length == 0) window.localStorage.removeItem('tasks');
@@ -136,20 +145,31 @@ function checkTaskListCount(list) {
         span.style.fontStyle = 'italic';
         document.querySelector('.task-container').appendChild(span);
         document.querySelector('.multiple-delete').style.display = 'none';
-    }   ;
+    };
 }
-
+function changeStoragedTasks() {
+    window.localStorage.removeItem('tasks');
+    window.localStorage.setItem('tasks', JSON.stringify(tasks))
+}
 function changeCheckbox(event) {
     const checkbox = event.currentTarget;
     const task = checkbox.closest('.task');
     const span = task.querySelector('.task-name');
     if (checkbox.checked) {
         span.style.textDecoration = 'line-through';
-        span.style.color = 'gray';
+        span.style.opacity = '0.7';
+        span.style.color = '#ffffff';
     }
     else {
         span.style.textDecoration = 'none';
         span.style.color = 'white';
+        span.style.opacity = '1';
+    }
+    const taskToUpdate = tasks.find(task => task.title === span.textContent);
+    if(taskToUpdate.completed !== String(checkbox.checked))
+    {
+        taskToUpdate.completed = checkbox.checked ? 'true' : 'false';
+        changeStoragedTasks();
     }
     if (getFinishedTasksCount() > 0) document.querySelector('.multiple-delete').style.display = 'block';
     else document.querySelector('.multiple-delete').style.display = 'none'
@@ -170,7 +190,7 @@ function handleFinishedTasks() {
     for (let i = tasks.length - 1; i >= 0; i--) {
         if (tasks[i].querySelector('input[type="checkbox"]').checked) tasks[i].querySelector('.delete').click();
     }
-    
+
 }
 document.querySelector('.multiple-delete').addEventListener('click', handleFinishedTasks);
 async function setWalpaper() {
