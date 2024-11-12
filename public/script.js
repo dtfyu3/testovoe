@@ -39,13 +39,13 @@ async function getWeather(coordinates) {
             try {
                 const response = JSON.parse(xhr.response);
                 const temp = parseFloat(response['main']['temp']).toFixed(1);
-                const icon_code = response['weather'][0]['icon'];
+                const icon_code = response['weather']['icon'];
                 document.querySelector('#weather .temp span').textContent = temp + "\u00B0" + 'C';
                 const img = document.getElementById('weather_image');
                 img.src = `https://openweathermap.org/img/wn/${icon_code}@2x.png`;
                 img.style.height = '50px';
                 img.style.width = '50px;'
-                document.querySelector('.city').textContent = response['city'];
+                document.querySelector('.city').textContent = response['name'];
             }
             catch (e) {
                 console.error('Error parsing JSON:', e);
